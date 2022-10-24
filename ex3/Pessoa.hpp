@@ -2,7 +2,7 @@
 #define PESSOA_HPP
 
 class Pessoa {
-    private:
+    public:
         bool validarCpf(unsigned long cpfTeste);
 
         char nome[50];
