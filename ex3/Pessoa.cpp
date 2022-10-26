@@ -1,6 +1,25 @@
 #include "Pessoa.hpp"
 
-bool Pessoa::validarCpf(unsigned long cpfTeste) {
+#include <iostream>
+
+Pessoa::Pessoa(std::string nomePessoa, unsigned short int idadePessoa)
+        :nome(nomePessoa) {
+    setIdade(idadePessoa);
+}
+
+void Pessoa::setIdade(unsigned short int idadePessoa) {
+    idade = (unsigned char)idadePessoa;
+}
+
+unsigned short int Pessoa::getIdade() {
+    return (unsigned short int)idade;
+}
+
+std::string Pessoa::getNome() {
+    return nome;
+}
+
+bool Pessoa::validarCPF(unsigned long cpfTeste) {
 
     int soma1{0};
     int soma2{0};
