@@ -13,7 +13,7 @@ int main() {
         std::cout << "--- Dimensoes retangulo " << i+1 << std::endl;
         int altura, largura;
         std::cout << "Altura: ";
-        std::cin.getline()
+        std::cin.getline();
         while (!rets[i].setAltura(altura)) {
             std::cout << "Altura invalida, insira novamente: " << std::endl;
             std::cin >> altura;
