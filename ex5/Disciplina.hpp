@@ -17,10 +17,16 @@ class Disciplina {
 
 		Pessoa* getProfessor();
 		void setProfessor(Pessoa* prof);
+
+		std::string getNomeProfessor();
+
+		bool adicionarAluno(Pessoa* aluno);
+		Pessoa** getVetorAlunos();
 		
 	private:
 		std::string nome;
 		unsigned short int cargaHoraria;
 		Pessoa *professor;
+		Pessoa *alunos[50];
 };
 #endif

@@ -5,19 +5,14 @@
 
 int main(){
 	
-	Pessoa* ptr1{new Pessoa};//Utilizando construtor default
-	Pessoa* ptr2{new Pessoa{"Joana", 22}};//Utilizando construtor com parâmetros
+	Pessoa p1{"Joao", 11111111111, 20};
+	Disciplina d1{"Orientacao a Objetos", &p1};
 
-	int* ptrInt{new int};//inteiro alocado e com lixo de memória
-	int* ptrIntIniciado{new int{2}};//inteiro alocado e inicializado com 2
-	ptr1->setNome("Maria");//operador -> para derreferenciar a função de objeto apontado
+	d1.setProfessor(&p1);
+	p1.setNome("Joao Silva");
 
-	*ptrInt = 20;//mesma coisa que com C
-	
-	std::cout << ptr1->getNome() << std::endl;
-	std::cout << ptr2->getNome() << std::endl;
-	std::cout << *ptrInt << std::endl;
-	std::cout << *ptrIntIniciado << std::endl;
-	
-	return 0;
+	std::cout << p1.getNome() << '\t' << p1.getIdade() << '\t' << p1.getCpf() << std::endl;
+	std::cout << d1.getNome() << std::endl;
+	std::cout << d1.getNomeProfessor() << std::endl;
+return 0;
 }

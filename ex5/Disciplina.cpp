@@ -28,3 +28,7 @@ Pessoa* Disciplina::getProfessor(){
 void Disciplina::setProfessor(Pessoa* prof){
 	professor = prof;
 }
+
+std::string Disciplina::getNomeProfessor() {
+	return professor->getNome();
+}
