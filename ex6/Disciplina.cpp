@@ -2,9 +2,19 @@
 
 #include "Disciplina.hpp"
 
-Disciplina::Disciplina(std::string nomeDisciplina, Pessoa *pessoa)
-	:nome{nomeDisciplina}, numAlunos{0} {
-	setProfessor(pessoa);
+Disciplina::Disciplina(Curso& curso)
+	:curso{curso}, numAlunos{0} {
+}
+
+Disciplina::Disciplina(std::string nome, Curso& curso, Pessoa* professor)
+	:nome{nome}, curso{curso}, numAlunos{0} {
+		setProfessor(professor);
+}
+
+Disciplina::Disciplina(std::string nome, Curso& curso, unsigned int cargaHoraria, Pessoa* professor)
+	:nome{nome}, curso{curso}, numAlunos{0} {
+		setCargaHoraria(cargaHoraria);
+		setProfessor(professor);
 }
 
 std::string Disciplina::getNome(){
@@ -15,7 +25,11 @@ void Disciplina::setNome(std::string novoNome){
 	nome = novoNome;
 }
 
-int Disciplina::getCargaHoraria(){
+Curso& Disciplina::getCurso() {
+	return this->curso;
+}
+
+unsigned int Disciplina::getCargaHoraria(){
 	return cargaHoraria;
 }
 

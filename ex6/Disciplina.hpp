@@ -6,32 +6,38 @@
 #include <string>
 
 #include "Pessoa.hpp"
+#include "Curso.hpp"
 
 class Disciplina { 
 	public:
-		Disciplina(std::string nomeDisciplina, Pessoa *professor);
+		Disciplina(Curso&);
+		Disciplina(std::string, Curso&, Pessoa*);
+		Disciplina(std::string, Curso&, unsigned int, Pessoa*);
 
 		std::string getNome();
-		void setNome(std::string novoNome);
+		void setNome(std::string);
+
+		Curso& getCurso();
 		
-		int getCargaHoraria();
-		void setCargaHoraria(unsigned int novaCarga);
+		unsigned int getCargaHoraria();
+		void setCargaHoraria(unsigned int);
 
 		Pessoa* getProfessor();
-		void setProfessor(Pessoa* prof);
+		void setProfessor(Pessoa*);
 
 		std::string getNomeProfessor();
 
-		bool adicionarAluno(Pessoa* aluno);
+		bool adicionarAluno(Pessoa*);
 		Pessoa** getVetorAlunos();
 
 		int getNumAlunos();
 		
 	private:
 		std::string nome;
-		unsigned short int cargaHoraria;
-		Pessoa *professor;
-		Pessoa *alunos[50];
+		Curso& curso; 
+		unsigned int cargaHoraria;
+		Pessoa* professor;
+		Pessoa* alunos[50];
 		unsigned int numAlunos;
 };
 #endif
