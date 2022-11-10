@@ -59,6 +59,7 @@ bool Disciplina::adicionarAluno(Pessoa* aluno) {
 
 void Disciplina::removeAluno(Pessoa* aluno) {
 	this->alunos.remove(aluno);
+	delete aluno;
 }
 
 void Disciplina::removeAluno(unsigned long cpf) {
@@ -67,6 +68,8 @@ void Disciplina::removeAluno(unsigned long cpf) {
 	for (it = this->alunos.begin(); it != this->alunos.end(); ++it) {
 		if ((*it)->getCpf() == cpf) {
 			this->alunos.erase(it);
+			delete *it;
+			break;
 		}
 	}
 }

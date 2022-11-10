@@ -9,7 +9,7 @@ int main() {
 
     Curso c1{"BCC", 2011, 4800};
 
-	Pessoa *p0{new Pessoa{"Leandro Karnal", 11111111111, 45}};
+	Pessoa *p0{new Pessoa{"Olavo de Carvalho", 11111111111, 45}};
 	
 	Disciplina d1{"Orientacao a Objetos", c1, p0};
 
@@ -30,10 +30,16 @@ int main() {
     }
 
     d1.removeAluno(p3);
+    d1.removeAluno(8286853989);
 
+    std::cout << '\n';
     for (Pessoa* p: d1.getAlunos()) {
         std::cout << p->getNome() << std::endl;
     }
+
+    delete p0;
+    delete p1;
+    delete p2;
 
     return 0;
 }
