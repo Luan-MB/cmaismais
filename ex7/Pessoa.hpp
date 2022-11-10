@@ -1,7 +1,7 @@
 #ifndef PESSOA_H
 #define PESSOA_H
 
-#include<string>
+#include <string>
 
 class Pessoa{
     public:
