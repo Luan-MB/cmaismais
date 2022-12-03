@@ -2,8 +2,10 @@
 #define DISCIPLINA_H
 
 #include <string>
+#include <list>
 
 #include "Pessoa.hpp"
+#include "ConteudoMinistrado.hpp"
 
 class SalaAula;
 
@@ -27,10 +29,17 @@ class Disciplina{
 
 		void imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso);
 
+		void adicionarConteudoMinistrado(std::string conteudo, unsigned short cargaHorariaConteudo);
+		void removerConteudoMinistrado(unsigned long id);
+        void imprimirConteudosMinistrados();
+		std::list<ConteudoMinistrado*>& getConteudos();
+		void limparConteudos();
+
 	private:
 		std::string nome;
 		unsigned short int cargaHoraria;
 		Pessoa* professor;
 		SalaAula* sala;
+		std::list<ConteudoMinistrado*> conteudos;
 };
 #endif

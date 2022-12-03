@@ -43,10 +43,11 @@ SalaAula* Disciplina::getSalaAula() {
 void Disciplina::setSalaAula(SalaAula* sala){
     if (this->sala != nullptr)
         this->sala->disciplinasMinistradas.remove(this);
-    sala->disciplinasMinistradas.push_back(this);
     this->sala = sala;
+    if (this->sala != nullptr)
+        sala->disciplinasMinistradas.push_back(this);
+    
 }
-
 
 void Disciplina::imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso){
     double pctCurso = (double)this->cargaHoraria/cargaTotalCurso;
@@ -56,4 +57,40 @@ void Disciplina::imprimirDados(std::string& cabecalho, unsigned int cargaTotalCu
     std::cout << "Carga: " << this->cargaHoraria << std::endl;
     std::cout << "Porcentagem do curso: " << pctCurso << "%" << std::endl;
     std::cout << "Professor: " << this->professor->getNome() << std::endl;
+}
+
+void Disciplina::adicionarConteudoMinistrado(std::string conteudo, unsigned short cargaHorariaConteudo){
+    this->conteudos.push_back(new ConteudoMinistrado{conteudo, cargaHorariaConteudo});
+}
+
+void Disciplina::removerConteudoMinistrado(unsigned long id) {
+    std::list<ConteudoMinistrado*>::iterator it;
+    for (it = this->conteudos.begin(); it != this->conteudos.end(); ++it) {
+        if ((*it)->getId() == id) {
+            this->conteudos.erase(it);
+            delete *it;
+            break;
+        }
+    }
+}
+
+void Disciplina::imprimirConteudosMinistrados(){
+    std::list<ConteudoMinistrado*>::iterator it;
+    for (it = conteudos.begin(); it!=conteudos.end(); ++it) {
+        std::cout << "Id: " << (*it)->getId() << std::endl
+            << "Conteudo: " << (*it)->getDescricao() << std::endl
+            << "Carga: " << (*it)->getCargaHorariaConteudo() << std::endl << std::endl;
+    }
+}
+
+std::list<ConteudoMinistrado*>& Disciplina::getConteudos() {
+    return this->conteudos;
+}
+
+void Disciplina::limparConteudos() {
+    std::list<ConteudoMinistrado*>::iterator it{this->conteudos.begin()};
+    while (it != this->conteudos.end()) {
+        delete *it;
+        it = this->conteudos.erase(it);
+    }
 }
