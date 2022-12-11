@@ -5,7 +5,6 @@
 #include "Pessoa.hpp"
 #include "Disciplina.hpp"
 #include "ConteudoMinistrado.hpp"
-#include "Console.hpp"
 #include "SalaAula.hpp"
 #include "Curso.hpp"
 

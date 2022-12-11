@@ -18,24 +18,29 @@ class Disciplina{
 		Disciplina(std::string nome, SalaAula* sala);
 		~Disciplina();
 
-		std::string getNome();
-		void setNome(std::string nome);
+		std::string getNome() const;
+		void setNome(const std::string& nome);
 		
-		int getCargaHoraria();
+		int getCargaHoraria() const;
 		void setCargaHoraria(unsigned int carga);
 
-		Pessoa* getProfessor();
+		const Pessoa* getProfessor() const;
         void setProfessor(Pessoa* prof);
 
-		SalaAula *getSalaAula();
+		const SalaAula *getSalaAula() const;
 		void setSalaAula(SalaAula* sala);
 
-		void imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso);
+		bool adicionarAluno(Pessoa*);
+		void removeAluno(Pessoa*);
+		void removeAluno(unsigned long);
+		const std::list<Pessoa*> getAlunos() const;
+
+		void imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso) const ;
 
 		void adicionarConteudoMinistrado(std::string conteudo, unsigned short cargaHorariaConteudo);
 		void removerConteudoMinistrado(unsigned long id);
         void imprimirConteudosMinistrados();
-		std::list<ConteudoMinistrado*>& getConteudos();
+		const std::list<ConteudoMinistrado*>& getConteudos() const;
 		void limparConteudos();
 
 	private:
@@ -43,6 +48,7 @@ class Disciplina{
 		unsigned short int cargaHoraria;
 		Pessoa* professor;
 		SalaAula* sala;
+		std::list<Pessoa*> alunos;
 		std::list<ConteudoMinistrado*> conteudos;
 };
 #endif

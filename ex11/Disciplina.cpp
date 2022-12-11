@@ -18,35 +18,35 @@ Disciplina::~Disciplina() {
         this->setSalaAula(nullptr);
         this->limparConteudos();
 }
-std::string Disciplina::getNome(){  
+std::string Disciplina::getNome() const {  
 	return nome;
 }
 
-void Disciplina::setNome(std::string nome){
+void Disciplina::setNome(const std::string& nome) {
 	this->nome = nome;
 }
 
-int Disciplina::getCargaHoraria(){
+int Disciplina::getCargaHoraria() const {
 	return this->cargaHoraria;
 }
 
-void Disciplina::setCargaHoraria(unsigned int carga){
+void Disciplina::setCargaHoraria(unsigned int carga) {
 	this->cargaHoraria = carga;
 }
 
-Pessoa* Disciplina::getProfessor(){
+const Pessoa* Disciplina::getProfessor() const {
     return this->professor;
 }
 
-void Disciplina::setProfessor(Pessoa* prof){
+void Disciplina::setProfessor(Pessoa* prof) {
     this->professor = prof;
 }
 
-SalaAula* Disciplina::getSalaAula() {
+const SalaAula* Disciplina::getSalaAula() const {
     return this->sala;
 }
 
-void Disciplina::setSalaAula(SalaAula* sala){
+void Disciplina::setSalaAula(SalaAula* sala) {
     if (this->sala != nullptr)
         this->sala->disciplinasMinistradas.remove(this);
     this->sala = sala;
@@ -55,7 +55,36 @@ void Disciplina::setSalaAula(SalaAula* sala){
     
 }
 
-void Disciplina::imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso){
+bool Disciplina::adicionarAluno(Pessoa* aluno) {
+	if (this->alunos.size() < 50) {
+		this->alunos.push_back(aluno);
+		return true;
+	}
+	return false;
+}
+
+void Disciplina::removeAluno(Pessoa* aluno) {
+	this->alunos.remove(aluno);
+	delete aluno;
+}
+
+void Disciplina::removeAluno(unsigned long cpf) {
+	std::list<Pessoa*>::iterator it;
+
+	for (it = this->alunos.begin(); it != this->alunos.end(); ++it) {
+		if ((*it)->getCpf() == cpf) {
+			this->alunos.erase(it);
+			delete *it;
+			break;
+		}
+	}
+}
+
+const std::list<Pessoa*> Disciplina::getAlunos() const {
+	return this->alunos;
+}
+
+void Disciplina::imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso) const {
     double pctCurso = (double)this->cargaHoraria/cargaTotalCurso;
     pctCurso = pctCurso * 100;
     std::cout << cabecalho << std::endl;
@@ -65,7 +94,7 @@ void Disciplina::imprimirDados(std::string& cabecalho, unsigned int cargaTotalCu
     std::cout << "Professor: " << this->professor->getNome() << std::endl;
 }
 
-void Disciplina::adicionarConteudoMinistrado(std::string conteudo, unsigned short cargaHorariaConteudo){
+void Disciplina::adicionarConteudoMinistrado(std::string conteudo, unsigned short cargaHorariaConteudo) {
     this->conteudos.push_back(new ConteudoMinistrado{conteudo, cargaHorariaConteudo});
 }
 
@@ -80,7 +109,7 @@ void Disciplina::removerConteudoMinistrado(unsigned long id) {
     }
 }
 
-void Disciplina::imprimirConteudosMinistrados(){
+void Disciplina::imprimirConteudosMinistrados() {
     std::list<ConteudoMinistrado*>::iterator it;
     for (it = conteudos.begin(); it!=conteudos.end(); ++it) {
         std::cout << "Id: " << (*it)->getId() << std::endl
@@ -89,7 +118,7 @@ void Disciplina::imprimirConteudosMinistrados(){
     }
 }
 
-std::list<ConteudoMinistrado*>& Disciplina::getConteudos() {
+const std::list<ConteudoMinistrado*>& Disciplina::getConteudos() const {
     return this->conteudos;
 }
 

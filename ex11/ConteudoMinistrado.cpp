@@ -15,14 +15,14 @@ ConteudoMinistrado::~ConteudoMinistrado() {
 	std::cerr << "--- Destruindo conteudo " << this->descricao << std::endl;
 }
 
-std::string& ConteudoMinistrado::getDescricao() const {
-	return descricao;
+std::string& ConteudoMinistrado::getDescricao() {
+	return this->descricao;
 }
 
 unsigned short ConteudoMinistrado::getCargaHorariaConteudo() const {
-	return cargaHorariaConteudo;
+	return this->cargaHorariaConteudo;
 }
 
 unsigned int ConteudoMinistrado::getId() const {
-	return id;
+	return this->id;
 }

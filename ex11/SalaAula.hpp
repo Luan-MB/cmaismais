@@ -16,14 +16,15 @@ class SalaAula {
 		SalaAula(std::string nome, unsigned int capacidade);
 		~SalaAula();
 		
-		std::string getNome();
+		std::string getNome() const;
 		void setNome(std::string nome);
 
-		unsigned int getCapacidade();
-		void setCapcidade(unsigned int capacidade);
+		unsigned int getCapacidade() const;
+		void setCapacidade(unsigned int capacidade);
 
 		void adicionarDisciplina(Disciplina* disciplina);
-		std::list<Disciplina*>& getDisciplinas();
+		const std::list<Disciplina*>& getDisciplinas() const;
+		
 	private:
 		std::string nome;
 		unsigned int capacidade;
