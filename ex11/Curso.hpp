@@ -12,13 +12,13 @@ class Curso {
         ~Curso();
 
         std::string getNome() const;
-        void setNome(std::string);
+        void setNome(const std::string& nome);
 
         unsigned short getAno() const;
-        void setAno(unsigned short);
+        void setAno(const unsigned short ano);
 
         unsigned int getCargaHoraria() const;
-        void setCargaHoraria(unsigned int);
+        void setCargaHoraria(const unsigned int cargaHoraria);
 
     private:
         std::string nome;

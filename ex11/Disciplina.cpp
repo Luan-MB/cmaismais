@@ -30,7 +30,7 @@ int Disciplina::getCargaHoraria() const {
 	return this->cargaHoraria;
 }
 
-void Disciplina::setCargaHoraria(unsigned int carga) {
+void Disciplina::setCargaHoraria(const unsigned int carga) {
 	this->cargaHoraria = carga;
 }
 
@@ -38,8 +38,10 @@ const Pessoa* Disciplina::getProfessor() const {
     return this->professor;
 }
 
-void Disciplina::setProfessor(Pessoa* prof) {
+void Disciplina::setProfessor(const Pessoa* prof) {
     this->professor = prof;
+    // prof->setNome("Nome2");
+    // A linha acima nao compila, pois prof e um atributo const(apenas de leitura)
 }
 
 const SalaAula* Disciplina::getSalaAula() const {
@@ -51,8 +53,7 @@ void Disciplina::setSalaAula(SalaAula* sala) {
         this->sala->disciplinasMinistradas.remove(this);
     this->sala = sala;
     if (this->sala != nullptr)
-        sala->disciplinasMinistradas.push_back(this);
-    
+        sala->disciplinasMinistradas.push_back(this);  
 }
 
 bool Disciplina::adicionarAluno(Pessoa* aluno) {
@@ -68,7 +69,7 @@ void Disciplina::removeAluno(Pessoa* aluno) {
 	delete aluno;
 }
 
-void Disciplina::removeAluno(unsigned long cpf) {
+void Disciplina::removeAluno(const unsigned long cpf) {
 	std::list<Pessoa*>::iterator it;
 
 	for (it = this->alunos.begin(); it != this->alunos.end(); ++it) {

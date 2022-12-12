@@ -14,13 +14,13 @@ class Pessoa{
         ~Pessoa();
 
         unsigned long getCpf() const;
-        void setCpf(unsigned long cpf);
+        void setCpf(const unsigned long& cpf);
 
         std::string getNome() const;
-        void setNome(std::string nome);
+        void setNome(const std::string& nome);
 
         unsigned short int getIdade() const;
-        void setIdade(unsigned short int idade);
+        void setIdade(const unsigned short int idade);
 
     private:
         bool validarCPF(unsigned long cpfTeste);

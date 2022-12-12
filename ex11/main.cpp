@@ -9,7 +9,7 @@
 #include "Curso.hpp"
 
 int main() {
-    Disciplina dis1{"C++", nullptr};
+    Disciplina dis1{"C+", nullptr};
     Disciplina* dis2{new Disciplina{"Java", nullptr}};
     
     SalaAula sala{"Lab Info 1", 40};
@@ -23,8 +23,10 @@ int main() {
     dis1.setSalaAula(&sala);
     dis2->setSalaAula(&sala);
 
+    dis1.setNome("C++");
+
     std::list<Disciplina*> disSala = sala.getDisciplinas();
-    std::list<Disciplina*>::iterator it;
+    std::list<Disciplina*>::const_iterator it;
     for(it = disSala.begin(); it != disSala.end(); it++)
         std::cerr << (*it)->getNome() << std::endl;
 

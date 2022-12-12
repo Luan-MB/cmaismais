@@ -22,17 +22,17 @@ class Disciplina{
 		void setNome(const std::string& nome);
 		
 		int getCargaHoraria() const;
-		void setCargaHoraria(unsigned int carga);
+		void setCargaHoraria(const unsigned int carga);
 
 		const Pessoa* getProfessor() const;
-        void setProfessor(Pessoa* prof);
+        void setProfessor(const Pessoa* prof);
 
 		const SalaAula *getSalaAula() const;
 		void setSalaAula(SalaAula* sala);
 
-		bool adicionarAluno(Pessoa*);
-		void removeAluno(Pessoa*);
-		void removeAluno(unsigned long);
+		bool adicionarAluno(Pessoa* aluno);
+		void removeAluno(Pessoa* aluno);
+		void removeAluno(const unsigned long cpf);
 		const std::list<Pessoa*> getAlunos() const;
 
 		void imprimirDados(std::string& cabecalho, unsigned int cargaTotalCurso) const ;
@@ -46,8 +46,8 @@ class Disciplina{
 	private:
 		std::string nome;
 		unsigned short int cargaHoraria;
-		Pessoa* professor;
-		SalaAula* sala;
+		const Pessoa* professor; // O ponteiro professor pode ser const, pois o objeto apontado nao e alterado diretamente
+		SalaAula* sala; // O ponteiro sala nao pode ser const, pois o objeto apontado e modificado diretamente em setSalaAula
 		std::list<Pessoa*> alunos;
 		std::list<ConteudoMinistrado*> conteudos;
 };

@@ -22,7 +22,7 @@ std::string SalaAula::getNome() const {
 	return this->nome;
 }
 
-void SalaAula::setNome(std::string nome){
+void SalaAula::setNome(const std::string& nome){
 	this->nome = nome;
 }
 
@@ -30,7 +30,7 @@ unsigned int SalaAula::getCapacidade() const {
 	return this->capacidade;
 }
 
-void SalaAula::setCapacidade(unsigned int capacidade){
+void SalaAula::setCapacidade(const unsigned int capacidade){
 	this->capacidade = capacidade;
 }
 

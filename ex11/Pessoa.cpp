@@ -27,7 +27,7 @@ unsigned long Pessoa::getCpf() const {
     return this->cpf;
 }
 
-void Pessoa::setCpf(unsigned long cpf){
+void Pessoa::setCpf(const unsigned long& cpf){
     if(validarCPF(cpf)){
         this->cpf = cpf;
         return;
@@ -40,7 +40,7 @@ std::string Pessoa::getNome() const {
     return this->nome;
 }
 
-void Pessoa::setNome(std::string nome){
+void Pessoa::setNome(const std::string& nome){
     this->nome = nome;
 }
 
@@ -48,7 +48,7 @@ unsigned short int Pessoa::getIdade() const {
     return (unsigned short int)idade;
 }
 
-void Pessoa::setIdade(unsigned short int novaIdade){
+void Pessoa::setIdade(const unsigned short int novaIdade){
 	if(novaIdade < 120)
     	idade = (unsigned char)novaIdade;
 	else

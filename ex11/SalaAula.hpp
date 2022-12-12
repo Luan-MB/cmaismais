@@ -17,10 +17,10 @@ class SalaAula {
 		~SalaAula();
 		
 		std::string getNome() const;
-		void setNome(std::string nome);
+		void setNome(const std::string& nome);
 
 		unsigned int getCapacidade() const;
-		void setCapacidade(unsigned int capacidade);
+		void setCapacidade(const unsigned int capacidade);
 
 		void adicionarDisciplina(Disciplina* disciplina);
 		const std::list<Disciplina*>& getDisciplinas() const;

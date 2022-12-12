@@ -16,7 +16,7 @@ Curso::~Curso() {
     std::cerr << "Destruindo curso " << this->nome << std::endl;
 }
 
-void Curso::setNome(std::string nome) {
+void Curso::setNome(const std::string& nome) {
     this->nome = nome;
 }
 
@@ -24,7 +24,7 @@ std::string Curso::getNome() const {
     return this->nome;
 }
 
-void Curso::setAno(unsigned short ano) {
+void Curso::setAno(const unsigned short ano) {
     this->ano = ano;
 }
 
@@ -32,7 +32,7 @@ unsigned short Curso::getAno() const {
     return this->ano;
 }
 
-void Curso::setCargaHoraria(unsigned int cargaHoraria) {
+void Curso::setCargaHoraria(const unsigned int cargaHoraria) {
     this->cargaHoraria = cargaHoraria;
 }
 
