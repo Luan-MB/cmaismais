@@ -11,7 +11,7 @@ OBJS = main.o
 all: $(PROG)
 
 $(PROG): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^ Fila.hpp
+	$(CC) $(CFLAGS) -o  $@ $^ Fila.hpp
 
 clean:
 	@rm -f *.o
