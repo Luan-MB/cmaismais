@@ -1,7 +1,6 @@
 // Luan Machado Bernardt GRR20190363
 
-#ifndef PESSOA_H
-#define PESSOA_H
+#pragma once
 
 #include <string>
 
@@ -30,4 +29,3 @@ class Pessoa{
         unsigned long cpf;
         unsigned char idade;
 };
-#endif

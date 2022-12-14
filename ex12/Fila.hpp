@@ -1,5 +1,6 @@
-#ifndef FILA_HPP
-#define FILA_HPP
+// Luan Machado Bernardt GRR20190363
+
+#pragma once
     
 #include <iostream>
 
@@ -43,7 +44,4 @@ class Fila {
         int inicio;
         int fim;
         T fila[MAX_SIZE];
-
 };
-
-#endif

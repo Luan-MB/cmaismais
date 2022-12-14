@@ -4,7 +4,7 @@ CC     = g++
 CFLAGS = -Wall #-Wshadow
 
 PROG = main
-OBJS = main.o
+OBJS = main.o Pessoa.o
 
 .PHONY: clean purge all
 
