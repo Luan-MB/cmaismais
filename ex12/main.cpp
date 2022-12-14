@@ -13,13 +13,9 @@ int main(){
 	f.append(new Pessoa{"Anaximenes"});
 	f.append(new Pessoa{"Parmenides"});
 	f.remove(&retorno);
+	delete retorno;
 	f.append(new Pessoa{"Pitagoras"});
 	f.append(new Pessoa{"Democrito"});
-
-	while (!f.empty()) {
-		f.remove(&retorno);
-		std::cout << retorno->getNome() << "\n";
-	}
 
 	std::cout << "Fim\n";
 

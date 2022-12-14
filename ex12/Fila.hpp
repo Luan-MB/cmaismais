@@ -1,6 +1,7 @@
 // Luan Machado Bernardt GRR20190363
 
-#pragma once
+#ifndef FILA_HPP
+#define FILA_HPP
     
 #include <iostream>
 
@@ -13,6 +14,11 @@ class Fila {
         }
 
         ~Fila() {
+            T elemento;
+            while (!this->empty()) {
+                this->remove(&elemento);
+                delete elemento;
+	        }
         }
 
         bool empty() {
@@ -45,3 +51,5 @@ class Fila {
         int fim;
         T fila[MAX_SIZE];
 };
+
+#endif

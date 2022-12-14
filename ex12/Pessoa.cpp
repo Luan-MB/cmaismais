@@ -19,10 +19,6 @@ Pessoa::Pessoa(std::string nome,
 }
 
 Pessoa::~Pessoa() {
-	std::cerr << " O " << std::endl;
-    std::cerr << "/|\\" << std::endl;
-    std::cerr << " H " << std::endl;
-    std::cerr << "/ \\" << std::endl;
 }
 
 unsigned long Pessoa::getCpf(){
