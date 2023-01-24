@@ -1,9 +1,7 @@
-// Luan Machado Bernardt GRR20190363
+#ifndef PESSOA_H
+#define PESSOA_H
 
-#ifndef PESSOA_HPP
-#define PESSOA_HPP
-
-#include <string>
+#include<string>
 
 class Pessoa{
     public:
@@ -11,6 +9,8 @@ class Pessoa{
         Pessoa(const std::string& nome);
         Pessoa(const std::string& nome, const unsigned long cpf);
         Pessoa(const std::string& nome, const unsigned long cpf, const unsigned short int idade);
+
+        virtual ~Pessoa() = default;
 
         unsigned long getCpf() const;
         void setCpf(const unsigned long cpf);

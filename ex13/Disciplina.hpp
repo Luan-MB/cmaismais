@@ -1,18 +1,18 @@
-#ifndef DISCIPLINA_H
-#define DISCIPLINA_H
+// Luan Machado Bernardt GRR20190363
+
+#ifndef DISCIPLINA_HPP
+#define DISCIPLINA_HPP
 
 #include <string>
 #include <list>
 
-#include "Pessoa.hpp"
-#include "ConteudoMinistrado.hpp"
-
-class SalaAula;//Forward Declaration
+#include "Professor.hpp"
+#include "Aluno.hpp"
 
 class Disciplina{
 	public:
+		Disciplina();
 		Disciplina(const std::string& nome);
-		Disciplina(const std::string& nome, SalaAula* const sala);
 
 		~Disciplina();
 
@@ -22,31 +22,22 @@ class Disciplina{
 		int getCargaHoraria() const;
 		void setCargaHoraria(const unsigned int carga);
 
-		const Pessoa* getProfessor() const;
-        void setProfessor(Pessoa* const prof);
-
-		void setSalaAula(SalaAula* const sala);
-        const SalaAula* getSalaAula() const;
-		void anularSalaAula();
+		const Professor* getProfessor() const;
+        void setProfessor(Professor* const prof);
 
 		void imprimirDados(const std::string& cabecalho, const unsigned int cargaTotalCurso) const;
 
-		void adicionarConteudoMinistrado(const std::string& conteudo, const unsigned short cargaHorariaConteudo);
-        void imprimirConteudosMinistrados() const;
-		const std::list<ConteudoMinistrado*>& getConteudos() const;
-
-		void adicionarAluno(Pessoa* const aluno);
-		void removerAluno(Pessoa* const aluno);
+		void adicionarAluno(Aluno* const aluno);
+		void removerAluno(Aluno* const aluno);
 		void removerAluno(const unsigned long cpf);
-		const std::list<Pessoa*>& getAlunos() const;
+		const std::list<Aluno*>& getAlunos() const;
+		void imprimirAlunos();
 
 	private:
 		std::string nome;
 		unsigned short int cargaHoraria;
-		Pessoa* professor;
-		SalaAula* sala;
+		Professor* professor;
 
-		std::list<ConteudoMinistrado*> conteudos;
-		std::list<Pessoa*> alunos;
+		std::list<Aluno*> alunos;
 };
 #endif

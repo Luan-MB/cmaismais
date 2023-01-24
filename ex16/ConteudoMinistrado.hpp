@@ -5,6 +5,8 @@
 
 class ConteudoMinistrado{
     public:
+        virtual ~ConteudoMinistrado() = default;
+
         ConteudoMinistrado(const std::string& descricao, const unsigned short cargaHorariaConteudo);
 
         const std::string& getDescricao() const;

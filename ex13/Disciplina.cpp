@@ -1,25 +1,21 @@
+// Luan Machado Bernardt GRR20190363
+
 #include "Disciplina.hpp"
 
 #include <iostream>
 
-#include "SalaAula.hpp"
-
 Disciplina::Disciplina(const std::string& nome)
-	:nome{nome},sala{nullptr} {
-}
-
-Disciplina::Disciplina(const std::string& nome, SalaAula* const sala)
-        :Disciplina{nome} {
-    this->setSalaAula(sala);
+	:nome{nome} {
 }
 
 Disciplina::~Disciplina(){
     std::cerr << "Destruindo a disciplina " << this->nome << "\n";
-    //o setSalaAula vai remover a disciplina da sala de aula antiga, caso ela exista
-    this->setSalaAula(nullptr);
-    std::list<ConteudoMinistrado*>::iterator it;
-    for(it=conteudos.begin(); it!=conteudos.end(); it++)
-        delete *it;//liberando a memória de cada conteúdo
+    
+    std::list<Aluno*>::iterator it{this->alunos.begin()};
+    while (it != this->alunos.end()) {
+        delete *it;
+        it = this->alunos.erase(it);
+    }
 }
 
 const std::string& Disciplina::getNome() const{
@@ -38,28 +34,12 @@ void Disciplina::setCargaHoraria(const unsigned int carga){
 	this->cargaHoraria = carga;
 }
 
-const Pessoa* Disciplina::getProfessor() const{
+const Professor* Disciplina::getProfessor() const{
     return this->professor;
 }
 
-void Disciplina::setProfessor(Pessoa* const prof){
+void Disciplina::setProfessor(Professor* const prof){
     this->professor = prof;
-}
-
-void Disciplina::setSalaAula(SalaAula* const sala){
-    if(this->sala != nullptr)//se já existia uma sala, remover a disciplina dessa sala
-        this->sala->disciplinasMinistradas.remove(this);
-    this->sala = sala;
-    if(this->sala != nullptr)
-        this->sala->disciplinasMinistradas.push_back(this);//adicionar a disciplina na nova sala
-}
-
-void Disciplina::anularSalaAula(){
-	this->sala = nullptr;
-}
-
-const SalaAula* Disciplina::getSalaAula() const{
-    return this->sala;
 }
 
 void Disciplina::imprimirDados(const std::string& cabecalho, const unsigned int cargaTotalCurso) const{
@@ -72,33 +52,16 @@ void Disciplina::imprimirDados(const std::string& cabecalho, const unsigned int 
     std::cout << "Professor: " << this->professor->getNome() << std::endl;
 }
 
-void Disciplina::adicionarConteudoMinistrado(const std::string& conteudo, const unsigned short cargaHorariaConteudo){
-    this->conteudos.push_back(new ConteudoMinistrado{conteudo, cargaHorariaConteudo});
-}
-
-void Disciplina::imprimirConteudosMinistrados() const{
-    std::list<ConteudoMinistrado*>::const_iterator it;
-    for(it = conteudos.begin(); it!=conteudos.end(); it++){
-        std::cout << "Id: " << (*it)->getId() << std::endl
-            << "Conteudo: " << (*it)->getDescricao() << std::endl
-            << "Carga: " << (*it)->getCargaHorariaConteudo() << std::endl << std::endl;
-    }
-}
-
-const std::list<ConteudoMinistrado*>& Disciplina::getConteudos() const{
-    return this->conteudos;
-}
-
-void Disciplina::adicionarAluno(Pessoa* const aluno){
+void Disciplina::adicionarAluno(Aluno* const aluno){
 	this->alunos.push_back(aluno);
 }
 
-void Disciplina::removerAluno(Pessoa* const aluno){
+void Disciplina::removerAluno(Aluno* const aluno){
 	this->alunos.remove(aluno);
 }
 
 void Disciplina::removerAluno(const unsigned long cpf){
-	std::list<Pessoa*>::iterator it;
+	std::list<Aluno*>::iterator it;
 
 	for(it = this->alunos.begin(); it != this->alunos.end(); it++)
 		if((*it)->getCpf() == cpf)
@@ -107,6 +70,14 @@ void Disciplina::removerAluno(const unsigned long cpf){
 		this->alunos.erase(it);
 }
 
-const std::list<Pessoa*>& Disciplina::getAlunos() const{//retornamos uma referência para a lista, o que custa mais barato
+const std::list<Aluno*>& Disciplina::getAlunos() const{//retornamos uma referência para a lista, o que custa mais barato
 	return this->alunos;
+}
+
+void Disciplina::imprimirAlunos() {
+    std::list<Aluno*>::iterator it;
+    for (it = alunos.begin(); it!=alunos.end(); ++it) {
+        std::cout << '\t' << (*it)->getNome() << '\t'
+            << "GRR" << (*it)->getGrr() << std::endl;
+    }
 }

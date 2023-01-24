@@ -1,3 +1,5 @@
+// Luan Machado Bernardt GRR20190363
+
 #ifndef PROFESSOR_ADJUNTO_HPP
 #define PROFESSOR_ADJUNTO_HPP
 

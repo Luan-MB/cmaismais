@@ -1,18 +1,33 @@
+// Luan Machado Bernardt GRR20190363
+
 #include <iostream>
 #include <list>
 
 #include "Disciplina.hpp"
-#include "Pessoa.hpp"
 #include "Professor.hpp"
-#include "ProfessorAdjunto.hpp"
+#include "Aluno.hpp"
 
 int main(){
-    ProfessorAdjunto p1{"João", 22222222222, 200, 20, "Banco de Dados"};
-    Professor p2{"Maria", 11111111111, 200, 20};
 
-    std::cout << p1.getNome() << '\t' << p1.getSalario() << std::endl;
-    std::cout << p2.getNome() << '\t' << p2.getSalario() << std::endl;
-    //ptr1 = &p2;
+    Disciplina d1{"C++"};
+    Professor p1{"Girafales", 11111111111, 200, 20};
+    
+    d1.setProfessor(&p1);
+
+    Aluno a1{"Chaves", 00000000000, 20190363};
+    Aluno a2{"Chiquinha", 22222222222, 20204532};
+    Aluno a3{"Quico", 33333333333, 20193453};
+    Aluno a4{"Godinez", 44444444444, 20197252};
+    
+    d1.adicionarAluno(&a1);
+    d1.adicionarAluno(&a2);
+    d1.adicionarAluno(&a3);
+    d1.adicionarAluno(&a4);
+
+    std::cout << d1.getNome() << std::endl;
+    std::cout << "Professor: " << d1.getProfessor()->getNome() << std::endl;
+    std::cout  << "Alunos: " << std::endl;
+    d1.imprimirAlunos();
     
     return 0;
 }

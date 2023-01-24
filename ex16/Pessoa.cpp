@@ -1,10 +1,11 @@
-// Luan Machado Bernardt GRR20190363
-
 #include "Pessoa.hpp"
 
 #include <iostream>
+#include<stdexcept>
 
-Pessoa::Pessoa() {}
+#include "CPFInvalidoException.hpp"
+
+Pessoa::Pessoa(){}
 
 Pessoa::Pessoa(const std::string& nome)
 	:nome{nome}{
@@ -13,14 +14,14 @@ Pessoa::Pessoa(const std::string& nome)
 Pessoa::Pessoa(const std::string& nome,
 			const unsigned long cpf)
 		:Pessoa{nome}{
-	setCpf(cpf);
+	this->setCpf(cpf);
 }
 
 Pessoa::Pessoa(const std::string& nome,
 			const unsigned long cpf,
 			const unsigned short int idade)
 		:Pessoa{nome, cpf}{
-	setIdade(idade);
+	this->setIdade(idade);
 }
 
 unsigned long Pessoa::getCpf() const{
@@ -28,13 +29,10 @@ unsigned long Pessoa::getCpf() const{
     return this->cpf;
 }
 
-void Pessoa::setCpf(const unsigned long cpf){
-    if(validarCPF(cpf)){
-        this->cpf = cpf;
-        return;
-    }
-	this->cpf = 0;//indica que não é um cpf válido 
-    return;
+void Pessoa::setCpf(unsigned long cpf){
+    if(!validarCPF(cpf))
+        throw CPFInvalidoException{cpf};
+    this->cpf = cpf;
 }
 
 std::string Pessoa::getNome() const{
@@ -50,10 +48,9 @@ unsigned short int Pessoa::getIdade() const{
 }
 
 void Pessoa::setIdade(const unsigned short int novaIdade){
-	if(novaIdade < 120)
-    	idade = (unsigned char)novaIdade;
-	else
-		idade = 0; //indicar erro
+	if(novaIdade > 120)
+		throw std::invalid_argument{"Idade Invalida."};
+	idade = (unsigned char)novaIdade;
 }
 
 void Pessoa::imprimirEnderecoMemoria() const{

@@ -5,7 +5,7 @@
 
 class Console{
 	public:
+		virtual ~Console();
 		static void imprimirDadosDisciplina(const Disciplina& disciplina);
-	
 };
 #endif

@@ -5,6 +5,8 @@
 
 class Console{
 	public:
+		virtual ~Console() = default;
+
 		static void imprimirDadosDisciplina(const Disciplina& disciplina);
 	
 };

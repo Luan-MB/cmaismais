@@ -1,3 +1,5 @@
+// Luan Machado Bernardt GRR20190363
+
 #include "ProfessorAdjunto.hpp"
 #include <iostream>
 
@@ -5,8 +7,6 @@ ProfessorAdjunto::ProfessorAdjunto(const std::string &nome, const unsigned long 
                     const unsigned int valorHora, const unsigned short cargaHoraria,
                     const std::string& pesquisa)
                 : Professor{nome, cpf, valorHora, cargaHoraria}, pesquisa{pesquisa} {
-    
-    std::cout << "Criou psor adj" << std::endl;
 }
  
 ProfessorAdjunto::~ProfessorAdjunto(){

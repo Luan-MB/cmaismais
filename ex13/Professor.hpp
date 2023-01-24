@@ -1,10 +1,13 @@
+// Luan Machado Bernardt GRR20190363
+
 #ifndef PROFESSOR_HPP
 #define PROFESSOR_HPP
 #include "Pessoa.hpp"
+
 class Professor : public Pessoa{
 public:
    Professor(const std::string &nome, const unsigned long cpf,
-             const unsigned int salario, const unsigned short cargaHoraria);
+             const unsigned int valorHora, const unsigned short cargaHoraria);
    ~Professor();
    void setValorHora(const unsigned int valorHora);
    unsigned int getValorHora() const;

@@ -4,7 +4,7 @@ CC     = g++
 CFLAGS = -Wall #-Wshadow
 
 PROG = main
-OBJS = Pessoa.o Professor.o ProfessorAdjunto.o Aluno.o Disciplina.o main.o
+OBJS = main.o Pessoa.o Professor.o Engenheiro.o ProfessorEngenheiro.o ProfessorAdjunto.o SalaAula.o Disciplina.o ConteudoMinistrado.o Console.o CPFInvalidoException.o
 
 .PHONY: clean purge all
 
