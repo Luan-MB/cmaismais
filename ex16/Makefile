@@ -13,7 +13,8 @@ OBJS = main.o \
 	SalaAula.o Disciplina.o \
 	ConteudoMinistrado.o \
 	Console.o \
-	CPFInvalidoException.o
+	CPFInvalidoException.o \
+	AlunoInexistenteException.o
 
 .PHONY: clean purge all
 
