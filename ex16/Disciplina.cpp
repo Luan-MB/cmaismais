@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "SalaAula.hpp"
+#include "AlunoInexistenteException.hpp"
 
 Disciplina::Disciplina(const std::string& nome)
 	:nome{nome},sala{nullptr} {
@@ -105,6 +106,8 @@ void Disciplina::removerAluno(const unsigned long cpf){
 			break;
 	if(it != this->alunos.end())
 		this->alunos.erase(it);
+    else
+        throw AlunoInexistenteException{cpf};    
 }
 
 const std::list<Pessoa*>& Disciplina::getAlunos() const{//retornamos uma referência para a lista, o que custa mais barato

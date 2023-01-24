@@ -2,7 +2,6 @@
 
 
 ProfessorAdjunto::~ProfessorAdjunto(){
-
 }
 
 const std::string& ProfessorAdjunto::getLinhaPesquisa() const{
