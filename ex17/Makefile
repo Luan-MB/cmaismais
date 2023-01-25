@@ -10,11 +10,12 @@ OBJS = main.o \
 	Engenheiro.o \
 	ProfessorEngenheiro.o \
 	ProfessorAdjunto.o \
-	SalaAula.o Disciplina.o \
+	SalaAula.o \
+	Disciplina.o \
 	ConteudoMinistrado.o \
 	Console.o \
 	CPFInvalidoException.o \
-	AlunoInexistenteException.o
+	CargaHorariaException.o
 
 .PHONY: clean purge all
 

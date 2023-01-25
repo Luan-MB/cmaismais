@@ -25,7 +25,7 @@ class Disciplina {
         void setNome(const std::string &nome);
 
         int getCargaHoraria() const;
-        void setCargaHoraria(const unsigned int carga);
+        void setCargaHoraria(const unsigned short int carga);
 
         const Professor *getProfessor() const;
         void setProfessor(Professor *const prof);

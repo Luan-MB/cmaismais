@@ -4,13 +4,15 @@
 
 #include "SalaAula.hpp"
 
+#include "CargaHorariaException.hpp"
+
 using namespace ufpr;
 
 Disciplina::Disciplina(const std::string& nome)
     : nome{nome}, sala{nullptr}, tipo{EnumTipoDisciplina::MANDATORIA} {}
 
 Disciplina::Disciplina(const std::string& nome, SalaAula* const sala)
-        : Disciplina{nome}, tipo{EnumTipoDisciplina::MANDATORIA} {
+        : nome{nome}, tipo{EnumTipoDisciplina::MANDATORIA} {
     this->setSalaAula(sala);
 }
 
@@ -34,7 +36,9 @@ void Disciplina::setNome(const std::string& nome) { this->nome = nome; }
 
 int Disciplina::getCargaHoraria() const { return this->cargaHoraria; }
 
-void Disciplina::setCargaHoraria(const unsigned int carga) {
+void Disciplina::setCargaHoraria(const unsigned short int carga) {
+    if (this->tipo == EnumTipoDisciplina::MANDATORIA && carga < 30)
+        throw CargaHorariaException{carga};
     this->cargaHoraria = carga;
 }
 
