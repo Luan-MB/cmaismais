@@ -1,8 +1,12 @@
 #ifndef CPF_HPP
 #define CPF_HPP
 
+#include <iostream>
+
 namespace ufpr{
 class CPF{
+    friend std::ostream& operator<<(std::ostream& stream, const CPF& cpf);
+
     public:
         CPF(const unsigned long numero);
         virtual ~CPF() = default;
@@ -11,9 +15,16 @@ class CPF{
 
         bool operator==(const CPF& outro) const;
         bool operator!=(const CPF& outro) const;
-        bool operator<(const CPF& outro) const;
-        const CPF& operator=(const CPF& outro);
 
+        bool operator<(const CPF& outro) const;
+        bool operator>(const CPF& outro) const;
+        bool operator<=(const CPF& outro) const;
+        bool operator>=(const CPF& outro) const;
+
+        const CPF& operator=(const CPF& outro);
+        const CPF& operator=(const unsigned long numero);
+
+        unsigned short operator[](const int idx) const;
     private:
         bool validarCPF(unsigned long cpfTeste) const;
         unsigned long numero;

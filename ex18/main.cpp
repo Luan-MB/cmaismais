@@ -1,24 +1,17 @@
 #include <iostream>
-#include <string>
-
-#include "Pessoa.hpp"
 #include "CPF.hpp"
+using namespace ufpr;
 
 int main(){
-    ufpr::CPF cpf1{11111111111};
-    ufpr::CPF cpf2{22222222222};
-
-    if (cpf1 == cpf2)
-        std::cout << "Diferentes" << std::endl;
-    else 
-        std::cout << "Iguais" << std::endl;
-
-    cpf1 = cpf2;
-
-    if (cpf1 == cpf2)
-        std::cout << "Diferentes" << std::endl;
-    else 
-        std::cout << "Iguais" << std::endl;
+    //abra um gerador de cpf e coloque
+    //um cpf que começa com 0
+    CPF cpf1{8286853989};
     
+    try {
+        std::cout << cpf1[11] << std::endl;
+    } catch (std::out_of_range &oor) {
+        std::cout << "Erro de Indice: " << oor.what() << std::endl;
+    }
+
     return 0;
 }
