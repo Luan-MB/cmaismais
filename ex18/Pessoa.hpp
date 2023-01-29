@@ -25,6 +25,14 @@ class Pessoa{
         void setIdade(const unsigned short int idade);
 
         void imprimirEnderecoMemoria() const;
+
+        bool operator==(const Pessoa& outro) const;
+        bool operator!=(const Pessoa& outro) const;
+
+        bool operator<(const Pessoa& outro) const;
+        bool operator>(const Pessoa& outro) const;
+        bool operator<=(const Pessoa& outro) const;
+        bool operator>=(const Pessoa& outro) const;
     protected:
         std::string nome;
         CPF cpf;

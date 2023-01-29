@@ -43,3 +43,15 @@ void Pessoa::setIdade(const unsigned short int novaIdade) {
 }
 
 void Pessoa::imprimirEnderecoMemoria() const { std::cout << this << std::endl; }
+
+bool Pessoa::operator==(const Pessoa& outro) const { return this->cpf == outro.cpf;}
+
+bool Pessoa::operator!=(const Pessoa& outro) const { return !(*this == outro);}
+
+bool Pessoa::operator<(const Pessoa& outro) const { return this->cpf < outro.cpf;}
+
+bool Pessoa::operator>(const Pessoa& outro) const { return !(*this < outro);}
+        
+bool Pessoa::operator<=(const Pessoa& outro) const { return !(*this > outro);}
+
+bool Pessoa::operator>=(const Pessoa& outro) const { return !(*this < outro);}

@@ -6,8 +6,11 @@
 namespace ufpr{
 class CPF{
     friend std::ostream& operator<<(std::ostream& stream, const CPF& cpf);
+    friend std::istream& operator>>(std::istream& stream, CPF& cpf);
+
 
     public:
+        CPF();
         CPF(const unsigned long numero);
         virtual ~CPF() = default;
         unsigned long getNumero() const;

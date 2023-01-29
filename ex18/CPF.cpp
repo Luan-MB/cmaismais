@@ -7,6 +7,8 @@
 
 namespace ufpr {
 
+CPF::CPF() {}
+
 CPF::CPF(const unsigned long numero) { this->setNumero(numero); }
 
 unsigned long CPF::getNumero() const { return this->numero; }
@@ -104,6 +106,9 @@ unsigned short CPF::operator[](const int idx) const {
 
 unsigned long CPF::operator()(const int idx, const int tam) const {
 
+    if ((idx > 10) || ((idx + tam) > 11)) throw IndiceInvalidoException(idx+tam);
+    
+
     unsigned long int cpf{this->numero};
     unsigned long int potencia{10};
 
@@ -117,5 +122,16 @@ unsigned long CPF::operator()(const int idx, const int tam) const {
 
     return trecho / potencia;
 }
+
+std::istream& operator>>(std::istream& stream, ufpr::CPF& cpf)
+{
+    unsigned long int possivelCpf;
+    stream >> possivelCpf;
+
+    if (!cpf.validarCPF(possivelCpf)) throw CPFInvalidoException{possivelCpf};
+    cpf.numero = possivelCpf;
+    return stream;
+}
+
 
 }  // namespace ufpr
