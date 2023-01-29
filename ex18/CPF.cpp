@@ -102,4 +102,20 @@ unsigned short CPF::operator[](const int idx) const {
     return cpf % 10;
 }
 
+unsigned long CPF::operator()(const int idx, const int tam) const {
+
+    unsigned long int cpf{this->numero};
+    unsigned long int potencia{10};
+
+    for (int i=idx; i<10; ++i)
+        potencia *= 10;
+
+    unsigned long int trecho{cpf % potencia};
+    
+    for (int i=0; i<tam; ++i)
+        potencia /= 10;
+
+    return trecho / potencia;
+}
+
 }  // namespace ufpr

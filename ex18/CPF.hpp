@@ -25,6 +25,8 @@ class CPF{
         const CPF& operator=(const unsigned long numero);
 
         unsigned short operator[](const int idx) const;
+
+        unsigned long operator()(const int idx, const int tam) const;
     private:
         bool validarCPF(unsigned long cpfTeste) const;
         unsigned long numero;

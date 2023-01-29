@@ -1,17 +1,16 @@
 #include <iostream>
+#include <iomanip>
 #include "CPF.hpp"
+#include "IndiceInvalidoException.hpp"
+
 using namespace ufpr;
 
-int main(){
+int main() {
     //abra um gerador de cpf e coloque
     //um cpf que começa com 0
     CPF cpf1{8286853989};
     
-    try {
-        std::cout << cpf1[11] << std::endl;
-    } catch (std::out_of_range &oor) {
-        std::cout << "Erro de Indice: " << oor.what() << std::endl;
-    }
+    std::cout << std::setfill('0') << std::setw(5) << cpf1(1,5) << std::endl;
 
     return 0;
 }
